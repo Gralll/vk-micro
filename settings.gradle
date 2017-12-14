@@ -1,0 +1,6 @@
+rootProject.name = 'vk-micro'
+
+include 'repost-service'
+include 'gateway-server'
+include 'eureka-server'
+include 'config-server'

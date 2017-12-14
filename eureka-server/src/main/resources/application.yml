@@ -1,0 +1,7 @@
+spring:
+  application.name: eureka-server
+  sleuth:
+    enabled: false
+
+server:
+  port: ${PORT:8761}

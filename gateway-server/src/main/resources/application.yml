@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: gateway-server
+server:
+  port: 8765
+
+zuul:
+    prefix: /api
+    routes:
+        repost:
+            path: /repost/**
+            serviceId: repost-service
