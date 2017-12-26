@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-//@EnableDiscoveryClient
 @EnableEurekaClient
-//@EnableFeignClients
 //@EnableConfigurationProperties
 @RestController
 public class RepostApplication {
@@ -17,7 +15,7 @@ public class RepostApplication {
         SpringApplication.run(RepostApplication.class, args);
     }
 
-    @GetMapping("/api")
+    @GetMapping("/hello")
     public String getSomething() {
         return "Hello";
     }

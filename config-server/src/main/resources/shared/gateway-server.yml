@@ -1,0 +1,21 @@
+server:
+  port: 9000
+
+ribbon:
+  eureka:
+    enabled: true
+
+zuul:
+#  host:
+#    connect-timeout-millis: 20000
+#    socket-timeout-millis: 20000
+  ignoredServices: '*'
+  prefix: /api
+  routes:
+    repost-service:
+        path: /repost/**
+        serviceId: repost-service
+
+ribbon:
+  ReadTimeout: 300000
+  ConnectTimeout: 100000

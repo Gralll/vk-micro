@@ -1,7 +1,10 @@
 spring:
+  application:
+    name: config
   cloud:
     config:
       server:
+        bootstrap: true
         native:
           search-locations: classpath:/shared
   profiles:
@@ -10,6 +13,7 @@ spring:
 server:
   port: 8888
 
-security:
-  user:
-    password: qwerty
+management:
+  context-path: /admin
+  security:
+    enabled: false

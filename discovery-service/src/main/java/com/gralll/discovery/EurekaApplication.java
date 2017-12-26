@@ -1,4 +1,4 @@
-package com.gralll.eureka;
+package com.gralll.discovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
