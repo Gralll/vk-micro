@@ -19,4 +19,9 @@ public class RepostApplication {
     public String getSomething() {
         return "Hello";
     }
+
+    @GetMapping("/hello1")
+    public String getSomething1() {
+        return "Hello1";
+    }
 }
