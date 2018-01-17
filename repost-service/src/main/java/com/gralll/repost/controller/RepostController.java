@@ -21,8 +21,4 @@ public class RepostController {
         return "Hello1";
     }
 
-    @GetMapping
-    public String repost() {
-
-    }
 }

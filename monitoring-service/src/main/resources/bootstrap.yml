@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: monitoring-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-service
+      name: monitoring-service
+      profile: default
+      failFast: true
