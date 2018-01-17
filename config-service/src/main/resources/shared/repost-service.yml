@@ -1,7 +1,0 @@
-server:
-  context-path: /repost
-  port: 8000
-
-ribbon:
-  eureka:
-    enabled: true

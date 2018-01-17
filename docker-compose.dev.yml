@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+  config:
+    build: config-service
+    ports:
+      - 8888:8888
+
+  discovery-service:
+    build: discovery-service
+
+  gateway-service:
+    build: gateway-service
+
+  repost-service:
+    build: repost-service
+    ports:
+      - 8000:8000
+
+  repost-service:
+    build: repost-service
+    ports:
+      - 8001:8001

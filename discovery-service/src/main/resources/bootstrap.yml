@@ -3,5 +3,9 @@ spring:
     name: discovery-service
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      discovery:
+        enabled: true
+        serviceId: config-service
+      name: discovery-service
+      profile: default
       failFast: true

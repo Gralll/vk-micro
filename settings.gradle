@@ -1,6 +1,7 @@
 rootProject.name = 'vk-micro'
 
-include 'repost-service'
 include 'gateway-service'
 include 'discovery-service'
 include 'config-service'
+include 'repost-service'
+include 'wall-service'

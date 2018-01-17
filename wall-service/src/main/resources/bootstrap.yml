@@ -1,11 +1,11 @@
 spring:
   application:
-    name: repost-service
+    name: wall-service
   cloud:
     config:
       discovery:
         enabled: true
         serviceId: config-service
-      name: repost-service
+      name: wall-service
       profile: default
       failFast: true
