@@ -45,6 +45,14 @@ subprojects {
         archiveName = project.name + ".jar"
     }
 
+    task dockerBuild << {
+        exec {
+            commandLine 'docker', 'build', '--force-rm=true', "--tag=${project.name}", '.'
+        }
+    }
+
+    dockerBuild.dependsOn build
+
     dependencyManagement {
         imports {
             mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR6'
@@ -70,6 +78,13 @@ subprojects {
 
     springBoot {
         executable = true
+    }
+}
+
+task buildAll {
+    dependsOn subprojects.build
+    doLast {
+        println 'Build all'
     }
 }
 

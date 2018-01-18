@@ -9,3 +9,18 @@ spring:
       name: discovery-service
       profile: default
       failFast: true
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+  server:
+    enableSelfPreservation: false
+
+security:
+  basic:
+    enabled: true
