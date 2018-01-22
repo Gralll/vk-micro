@@ -2,9 +2,9 @@
 
 ./gradlew config-service:dB
 ./gradlew discovery-service:dB
-./gradlew gateway-service:dB
-./gradlew monitoring-service:dB
-./gradlew wall-service:dB
-./gradlew repost-service:dB
+#./gradlew gateway-service:dB
+#./gradlew monitoring-service:dB
+#./gradlew wall-service:dB
+#./gradlew repost-service:dB
 
 ./run up -d

@@ -1,5 +1,8 @@
 version: '2.1'
 services:
+  rabbitmq:
+    ports:
+      - 5672:5672
 
   config-service:
     build: config-service
@@ -9,22 +12,18 @@ services:
   discovery-service:
     build: discovery-service
 
-  gateway-service:
-    build: gateway-service
-
-  monitoring-service:
-    build: monitoring-service
-
-  repost-service:
-    build: repost-service
-    ports:
-      - 8000:8000
-
-  wall-service:
-    build: wall-service
-    ports:
-      - 8001:8001
-
-  rabbitmq:
-    ports:
-      - 5672:5672
+#  gateway-service:
+#    build: gateway-service
+#
+#  monitoring-service:
+#    build: monitoring-service
+#
+#  repost-service:
+#    build: repost-service
+#    ports:
+#      - 8000:8000
+#
+#  wall-service:
+#    build: wall-service
+#    ports:
+#      - 8001:8001

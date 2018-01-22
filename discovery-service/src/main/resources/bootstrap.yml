@@ -3,23 +3,33 @@ spring:
     name: discovery-service
   cloud:
     config:
-      discovery:
-        enabled: true
-        serviceId: config-service
+      uri: http://config-service:8888
+#      discovery:
+#        enabled: true
+#        serviceId: config-service
       name: discovery-service
       profile: default
       failFast: true
 
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    server:
+#      waitTimeInMsWhenSyncEmpty: 0
+#  server:
+#    enableSelfPreservation: false
+
 eureka:
   instance:
-    hostname: localhost
+    prefer-ip-address: true
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    registerWithEureka: false
+    fetchRegistry: false
     server:
       waitTimeInMsWhenSyncEmpty: 0
-  server:
-    enableSelfPreservation: false
 
 security:
   basic:

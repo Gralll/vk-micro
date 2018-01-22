@@ -6,6 +6,7 @@ spring:
       server:
         git:
           uri: https://github.com/Gralll/vk-micro-config.git
+#          uri: file://${user.home}/config-repo/dev
           searchPaths: dev
 
 server:
@@ -15,3 +16,7 @@ management:
   context-path: /admin
   security:
     enabled: false
+
+eureka:
+  client:
+    registerWithEureka: false

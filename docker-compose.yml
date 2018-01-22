@@ -1,80 +1,5 @@
 version: '2.1'
 services:
-
-  config-service:
-    image: vk-micro/config-service
-    restart: always
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  discovery-service:
-    image: vk-micro/discovery-service
-    restart: always
-    depends_on:
-      - config-service
-
-    ports:
-      - 8761:8761
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  gateway-service:
-    image: vk-micro/gateway-service
-    restart: always
-    depends_on:
-      config-service:
-        condition: service_healthy
-    ports:
-      - 80:4000
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  monitoring-service:
-    image: vk-micro/monitoring-service
-    restart: always
-    depends_on:
-      config-service:
-        condition: service_healthy
-    ports:
-      - 9000:8080
-      - 8989:8989
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  repost-service:
-    image: vk-micro/repost-service
-    ports:
-      - 8000:8000
-    restart: always
-    depends_on:
-      config-service:
-        condition: service_healthy
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
-  wall-service:
-    image: vk-micro/wall-service
-    ports:
-      - 8001:8001
-    restart: always
-    depends_on:
-      config-service:
-        condition: service_healthy
-    logging:
-      options:
-        max-size: "10m"
-        max-file: "10"
-
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
@@ -84,3 +9,86 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+  config-service:
+    image: vk-micro/config-service
+    container_name: config-service
+    restart: always
+#    restart: unless-stopped
+    ports:
+      - 8888:8888
+    environment:
+      - EUREKA_URL=discovery-service:8761
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  discovery-service:
+    image: vk-micro/discovery-service
+    container_name: discovery-service
+    restart: always
+    environment:
+      - CONFIG_SERVER_URL=http://config-service:8888
+    depends_on:
+      - config-service
+#        condition: service_healthy
+    ports:
+      - 8761:8761
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+#  gateway-service:
+#    image: vk-micro/gateway-service
+#    restart: always
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
+#    ports:
+#      - 80:4000
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#
+#  monitoring-service:
+#    image: vk-micro/monitoring-service
+#    restart: always
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
+#    ports:
+#      - 9000:8080
+#      - 8989:8989
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#
+#  repost-service:
+#    image: vk-micro/repost-service
+#    ports:
+#      - 8000:8000
+#    restart: always
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#
+#  wall-service:
+#    image: vk-micro/wall-service
+#    ports:
+#      - 8001:8001
+#    restart: always
+#    depends_on:
+#      config-service:
+#        condition: service_healthy
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
